@@ -96923,8 +96923,8 @@ K(a){var s,r,q=this,p=null,o=A.eK(16),n=t.p
 o=A.ex(A.ec(p,A.d0(A.b([B.a2X,B.j7,A.bK(A.aN4("HH.mm.ss").xW(q.r),p,p,p,B.CA,p,p,p),A.bK(A.aN4("d MMMM yyyy").xW(q.r),p,p,p,B.n3,p,p,p),B.j5,A.ec(p,B.VM,B.x,p,p,new A.dc(B.T,p,p,A.eK(20),p,p,B.aQ),p,p,p,B.Ln,p,p,p)],n),B.aH,B.A,B.bv,0,B.O),B.x,p,p,new A.dc(B.Ji,p,p,o,p,p,B.aQ),p,p,p,B.pF,p,p,p),3)
 s=A.eK(16)
 r=A.a6P(B.ph,1)
-s=A.fI(A.b([o,B.XR,A.ex(A.ec(p,A.d0(A.b([A.ec(p,B.MR,B.x,p,p,B.o7,p,32,p,p,p,p,32),B.dI,B.a3y,B.a3w],n),B.aH,B.io,B.bv,0,B.O),B.x,p,p,new A.dc(B.j,p,r,s,p,p,B.aQ),p,p,p,B.pE,p,p,p),2)],n),B.bb,B.A,B.Q,0,p)
-r=A.fI(A.b([B.a3r,A.CO(p,p,B.MW,p,p,q.garm(),p,p,p)],n),B.a6,B.ip,B.Q,0,p)
+s=A.fI(A.b([o,B.XR,A.ex(A.ec(p,A.d0(A.b([A.ec(p,B.MR,B.x,p,p,B.o7,p,32,p,p,p,p,32),B.dI,B.a3y,B.a3v],n),B.aH,B.io,B.bv,0,B.O),B.x,p,p,new A.dc(B.j,p,r,s,p,p,B.aQ),p,p,p,B.pE,p,p,p),2)],n),B.bb,B.A,B.Q,0,p)
+r=A.fI(A.b([B.a3w,A.CO(p,p,B.MW,p,p,q.garm(),p,p,p)],n),B.a6,B.ip,B.Q,0,p)
 return A.iw(!0,A.d0(A.b([new A.bi(B.Ls,new A.QM(s,p),p),new A.bi(B.Lx,r,p),A.ex(J.kE(q.e)?B.Gp:A.aIU(p,new A.asJ(q),J.cx(q.e),B.Lb,p,!1),1)],n),B.a6,B.A,B.Q,0,B.O),B.a3,!0)}}
 A.asL.prototype={
 $1(a){var s=this.a
@@ -97035,7 +97035,7 @@ n=A.aIT(B.a3,B.MO,q.gaoH(),A.bK(m.a1w(n,!1),p,p,p,p,p,p,p),B.a3c,B.N6)
 m=q.x
 s=m?p:q.gapO()
 r=m?B.XV:B.N_
-return A.lo(o,p,A.iw(!0,A.FX(A.CA(p,A.d0(A.b([n,B.c_,new A.h9(q.e,"Judul",B.qk,!1,new A.aD7(),p),B.c_,new A.h9(q.f,"Deskripsi",B.MG,!1,new A.aD8(),p),B.d5,A.aNt(r,A.bK(m?"Menyimpan...":"Simpan dan Aktifkan Notifikasi",p,p,p,p,p,p,p),s,A.wa(p,p,B.T,p,p,p,p,p,p,B.j,p,p,B.ee,p,p,p,p,p,p,p)),B.j6,B.a3v],t.p),B.bb,B.A,B.Q,0,B.O),q.d),B.cw,p,B.ae),B.a3,!0),p)}}
+return A.lo(o,p,A.iw(!0,A.FX(A.CA(p,A.d0(A.b([n,B.c_,new A.h9(q.e,"Judul",B.qk,!1,new A.aD7(),p),B.c_,new A.h9(q.f,"Deskripsi",B.MG,!1,new A.aD8(),p),B.d5,A.aNt(r,A.bK(m?"Menyimpan...":"Simpan dan Aktifkan Notifikasi",p,p,p,p,p,p,p),s,A.wa(p,p,B.T,p,p,p,p,p,p,B.j,p,p,B.ee,p,p,p,p,p,p,p)),B.j6,B.a3u],t.p),B.bb,B.A,B.Q,0,B.O),q.d),B.cw,p,B.ae),B.a3,!0),p)}}
 A.aD4.prototype={
 $0(){return this.a.w=this.b},
 $S:0}
@@ -97233,7 +97233,7 @@ o=A.eL(A.ec(q,r,B.x,q,q,new A.dc(q,s,o,q,q,q,B.e0),q,96,q,q,q,q,96),q,q)
 s=n?q:p.b
 s=A.eL(A.bK(s==null?"-":s,q,q,q,B.Cx,q,q,q),q,q)
 n=n?q:p.c
-return A.iw(!0,A.af_(A.b([B.Gt,B.c_,o,B.j5,s,A.eL(A.bK(n==null?"-":n,q,q,q,B.jf,q,q,q),q,q),B.XW,A.eL(A.aNt(B.a3s,B.MU,new A.ak4(a),A.wa(q,q,B.T,q,q,q,q,q,q,q,q,q,B.Ly,q,new A.cG(A.eK(20),B.o),q,q,q,q,q)),q,q),B.d5,B.Kv,A.Sr(B.MK,new A.ak5(a),"Ganti Sandi"),A.Sr(B.em,new A.ak6(a),"Kebijakan Privasi"),A.Sr(B.Mx,new A.ak7(a),"Tentang Aplikasi"),A.Sr(B.MF,new A.ak8(a),"Tentang Saya"),B.c_,A.Sr(B.My,new A.ak9(a),"Keluar")],t.p),B.Lh,B.ae),B.a3,!0)}}
+return A.iw(!0,A.af_(A.b([B.Gt,B.c_,o,B.j5,s,A.eL(A.bK(n==null?"-":n,q,q,q,B.jf,q,q,q),q,q),B.XW,A.eL(A.aNt(B.a3r,B.MU,new A.ak4(a),A.wa(q,q,B.T,q,q,q,q,q,q,q,q,q,B.Ly,q,new A.cG(A.eK(20),B.o),q,q,q,q,q)),q,q),B.d5,B.Kv,A.Sr(B.MK,new A.ak5(a),"Ganti Sandi"),A.Sr(B.em,new A.ak6(a),"Kebijakan Privasi"),A.Sr(B.Mx,new A.ak7(a),"Tentang Aplikasi"),A.Sr(B.MF,new A.ak8(a),"Tentang Saya"),B.c_,A.Sr(B.My,new A.ak9(a),"Keluar")],t.p),B.Lh,B.ae),B.a3,!0)}}
 A.ak4.prototype={
 $0(){var s=A.j3(new A.ak3(),null,t.z)
 return A.dC(this.a,!1).h2(s)},
@@ -110356,8 +110356,8 @@ B.Go=new A.i3(B.S,null,null,B.a3_,null)
 B.U3=new A.bi(B.Lg,B.Go,null)
 B.a35=new A.bQ("Data pengguna dikelola secara bertanggung jawab untuk mendukung fitur aplikasi.",null,B.n4,null,null,null,null,null,null,null)
 B.U5=new A.bi(B.cw,B.a35,null)
-B.a3t=new A.bQ("Health App membantu pengguna membangun kebiasaan hidup sehat.",null,B.n4,null,null,null,null,null,null,null)
-B.U6=new A.bi(B.cw,B.a3t,null)
+B.a3s=new A.bQ("Health App membantu pengguna membangun kebiasaan hidup sehat.",null,B.n4,null,null,null,null,null,null,null)
+B.U6=new A.bi(B.cw,B.a3s,null)
 B.xo=new A.Ea(null)
 B.cl=new A.RZ(0,"fill")
 B.U7=new A.S_(0,"fill")
@@ -110741,8 +110741,8 @@ B.a3x=new A.bQ("Alarm makan berhasil disimpan",null,null,null,null,null,null,nul
 B.Y9=new A.k6(B.a3x,null,null,null,null,null,null,null,null,null,null,null,null,B.bH,!1,null,null,null,B.D,null)
 B.a3A=new A.bQ("Silakan login terlebih dahulu",null,null,null,null,null,null,null,null,null)
 B.Ya=new A.k6(B.a3A,null,null,null,null,null,null,null,null,null,null,null,null,B.bH,!1,null,null,null,B.D,null)
-B.a3u=new A.bQ("Pendaftaran berhasil, silakan login",null,null,null,null,null,null,null,null,null)
-B.Yb=new A.k6(B.a3u,null,null,null,null,null,null,null,null,null,null,null,null,B.bH,!1,null,null,null,B.D,null)
+B.a3t=new A.bQ("Pendaftaran berhasil, silakan login",null,null,null,null,null,null,null,null,null)
+B.Yb=new A.k6(B.a3t,null,null,null,null,null,null,null,null,null,null,null,null,B.bH,!1,null,null,null,B.D,null)
 B.a34=new A.bQ("Profil berhasil diperbarui",null,null,null,null,null,null,null,null,null)
 B.Yc=new A.k6(B.a34,null,null,null,null,null,null,null,null,null,null,null,null,B.bH,!1,null,null,null,B.D,null)
 B.C0=new A.G6(0,"permissive")
@@ -111160,13 +111160,13 @@ B.a3l=new A.bQ("Masuk",null,B.a0Y,null,null,null,null,null,null,null)
 B.a3o=new A.bQ("Asisten Herbal",null,null,null,null,null,null,null,null,null)
 B.a_n=new A.o(!0,null,null,null,null,null,22,B.ce,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.a3p=new A.bQ("Makanan dan Minuman",null,B.a_n,null,null,null,null,null,null,null)
-B.a_i=new A.o(!0,null,null,null,null,null,18,B.ce,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.a3r=new A.bQ("Alaram",null,B.a_i,null,null,null,null,null,null,null)
 B.a0M=new A.o(!0,B.j,null,null,null,null,13,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.a3s=new A.bQ("Sunting Profile",null,B.a0M,null,null,null,null,null,null,null)
-B.a3v=new A.bQ("Notifikasi akan muncul setiap hari pada waktu yang dipilih di perangkat Android/iOS.",null,B.jf,B.dL,null,null,null,null,null,null)
+B.a3r=new A.bQ("Sunting Profile",null,B.a0M,null,null,null,null,null,null,null)
+B.a3u=new A.bQ("Notifikasi akan muncul setiap hari pada waktu yang dipilih di perangkat Android/iOS.",null,B.jf,B.dL,null,null,null,null,null,null)
 B.a2E=new A.o(!0,B.aV,null,null,null,null,10,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.a3w=new A.bQ("Terhadap lambungmu",null,B.a2E,null,null,null,null,null,null,null)
+B.a3v=new A.bQ("Terhadap lambungmu",null,B.a2E,null,null,null,null,null,null,null)
+B.a_i=new A.o(!0,null,null,null,null,null,18,B.ce,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
+B.a3w=new A.bQ("Alarm",null,B.a_i,null,null,null,null,null,null,null)
 B.a1J=new A.o(!0,null,null,null,null,null,null,B.ce,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.a3y=new A.bQ("Peduli",null,B.a1J,null,null,null,null,null,null,null)
 B.a3z=new A.bQ("Daftar",null,null,null,null,null,null,null,null,null)
