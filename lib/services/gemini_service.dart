@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
@@ -108,6 +109,111 @@ Jangan memberi diagnosis, dosis obat, atau menyarankan pengobatan pengganti tera
         'Gemini tidak mengembalikan jawaban.';
   }
 
+  static const _foodPrompt = '''
+Kamu adalah asisten gizi untuk penderita asam lambung (GERD/maag).
+Analisis foto makanan atau minuman ini, lalu balas HANYA dengan JSON valid (tanpa markdown, tanpa teks lain) dengan field:
+{
+  "is_food": true/false (false jika foto bukan makanan/minuman),
+  "nama": "nama makanan/minuman",
+  "kalori": "perkiraan kalori untuk porsi di foto, contoh: ±250 kkal",
+  "kandungan": ["3-5 poin singkat kandungan utama, contoh: Lemak tinggi, Karbohidrat, Gula"],
+  "status": "aman" | "hati_hati" | "hindari",
+  "alasan": "1-3 kalimat alasan status, kaitkan dengan asam lambung",
+  "bahan_berisiko": ["bahan/pemicu asam lambung yang terlihat atau umum ada, kosongkan jika tidak ada"],
+  "saran": "1-2 kalimat saran praktis (porsi, waktu makan, pengganti yang lebih aman)"
+}
+Pertimbangkan pemicu asam lambung: pedas, asam (jeruk, tomat, cuka), gorengan/berlemak, santan, kafein, soda, cokelat, mint, alkohol, bawang mentah.
+Bersikap hati-hati: jika ragu, pilih "hati_hati" daripada "aman". Kalori hanya perkiraan. Jangan memberi diagnosis. Gunakan bahasa Indonesia.
+''';
+
+  Future<FoodAnalysis> analyzeFood(
+    Uint8List imageBytes, {
+    String mimeType = 'image/jpeg',
+  }) async {
+    final apiKey = dotenv.env['GEMINI_API_KEY']?.trim();
+    if (apiKey == null || apiKey.isEmpty || apiKey.startsWith('REPLACE_')) {
+      throw const GeminiException(
+        'API key Gemini belum dikonfigurasi. Ganti placeholder di file .env dengan key baru.',
+      );
+    }
+
+    final requestBody = jsonEncode({
+      'contents': [
+        {
+          'parts': [
+            {'text': _foodPrompt},
+            {
+              'inline_data': {
+                'mime_type': mimeType,
+                'data': base64Encode(imageBytes),
+              },
+            },
+          ],
+        },
+      ],
+      'generationConfig': {
+        'temperature': 0.3,
+        'maxOutputTokens': 1024,
+        'responseMimeType': 'application/json',
+      },
+    });
+
+    late http.Response response;
+    for (var attempt = 0; attempt < 2; attempt++) {
+      try {
+        response = await http
+            .post(
+              Uri.parse('$_baseUrl?key=$apiKey'),
+              headers: {'Content-Type': 'application/json'},
+              body: requestBody,
+            )
+            .timeout(const Duration(seconds: 40));
+      } on TimeoutException {
+        if (attempt == 1) {
+          throw const GeminiException(
+            'Analisis terlalu lama. Periksa internet lalu coba lagi.',
+          );
+        }
+        await _waitBeforeRetry(attempt);
+        continue;
+      } on Exception {
+        if (attempt == 1) {
+          throw const GeminiException(
+            'Tidak dapat terhubung ke Gemini. Periksa koneksi internet HP.',
+          );
+        }
+        await _waitBeforeRetry(attempt);
+        continue;
+      }
+      if (![429, 500, 503].contains(response.statusCode) || attempt == 1) {
+        break;
+      }
+      await _waitBeforeRetry(attempt);
+    }
+
+    if (response.statusCode != 200) {
+      throw GeminiException(
+        'Gagal menganalisis (${response.statusCode}). ${_errorDetail(response.body)}',
+      );
+    }
+
+    try {
+      final data = jsonDecode(response.body) as Map<String, dynamic>;
+      final parts =
+          (((data['candidates'] as List).first
+                      as Map<String, dynamic>)['content']
+                  as Map<String, dynamic>)['parts']
+              as List<dynamic>;
+      var text = (parts.first as Map<String, dynamic>)['text'] as String;
+      text = text.replaceAll('```json', '').replaceAll('```', '').trim();
+      return FoodAnalysis.fromJson(jsonDecode(text) as Map<String, dynamic>);
+    } catch (_) {
+      throw const GeminiException(
+        'Hasil analisis tidak bisa dibaca. Coba foto ulang dengan lebih jelas.',
+      );
+    }
+  }
+
   String _errorDetail(String body) {
     try {
       final data = jsonDecode(body) as Map<String, dynamic>;
@@ -130,4 +236,47 @@ class GeminiException implements Exception {
 
   @override
   String toString() => message;
+}
+
+/// Hasil analisis foto makanan/minuman.
+class FoodAnalysis {
+  const FoodAnalysis({
+    required this.isFood,
+    required this.nama,
+    required this.kalori,
+    required this.kandungan,
+    required this.status,
+    required this.alasan,
+    required this.bahanBerisiko,
+    required this.saran,
+  });
+
+  final bool isFood;
+  final String nama;
+  final String kalori;
+  final List<String> kandungan;
+
+  /// 'aman', 'hati_hati', atau 'hindari'
+  final String status;
+  final String alasan;
+  final List<String> bahanBerisiko;
+  final String saran;
+
+  factory FoodAnalysis.fromJson(Map<String, dynamic> json) {
+    List<String> list(dynamic v) =>
+        v is List ? v.map((e) => e.toString()).toList() : <String>[];
+    final status = (json['status'] as String? ?? 'hati_hati').toLowerCase();
+    return FoodAnalysis(
+      isFood: json['is_food'] != false,
+      nama: json['nama'] as String? ?? '-',
+      kalori: json['kalori'] as String? ?? '-',
+      kandungan: list(json['kandungan']),
+      status: ['aman', 'hati_hati', 'hindari'].contains(status)
+          ? status
+          : 'hati_hati',
+      alasan: json['alasan'] as String? ?? '',
+      bahanBerisiko: list(json['bahan_berisiko']),
+      saran: json['saran'] as String? ?? '',
+    );
+  }
 }

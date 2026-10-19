@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../services/auth_service.dart';
-import '../../../utils/constants.dart';
 import '../../../utils/validators.dart';
-import '../../../widgets/custom_textfield.dart';
+import '../../../widgets/maroon_form.dart';
 
 class EditProfilScreen extends StatefulWidget {
   const EditProfilScreen({super.key});
@@ -56,60 +55,29 @@ class _EditProfilScreenState extends State<EditProfilScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sunting Profil'),
-        backgroundColor: AppColors.primary,
-        foregroundColor: Colors.white,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CustomTextField(
-                controller: _namaController,
-                label: 'Nama',
-                icon: Icons.person_outline,
-                validator: (v) => Validators.validateNotEmpty(v, 'Nama'),
-              ),
-              const SizedBox(height: 16),
-              CustomTextField(
-                controller: _emailController,
-                label: 'Email',
-                icon: Icons.email_outlined,
-                validator: Validators.validateEmail,
-              ),
-              const SizedBox(height: 24),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                onPressed: _isLoading ? null : _simpan,
-                child: _isLoading
-                    ? const SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: Colors.white,
-                        ),
-                      )
-                    : const Text(
-                        'Simpan',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
-              ),
-            ],
-          ),
+    return MaroonFormPage(
+      title: 'Sunting Profil',
+      subtitle: 'Perbarui nama dan email akunmu',
+      icon: Icons.manage_accounts,
+      formKey: _formKey,
+      children: [
+        MaroonField(
+          controller: _namaController,
+          label: 'Nama',
+          icon: Icons.person_outline,
+          validator: (v) => Validators.validateNotEmpty(v, 'Nama'),
         ),
-      ),
+        const SizedBox(height: 16),
+        MaroonField(
+          controller: _emailController,
+          label: 'Email',
+          icon: Icons.email_outlined,
+          keyboardType: TextInputType.emailAddress,
+          validator: Validators.validateEmail,
+        ),
+        const SizedBox(height: 28),
+        MaroonButton(label: 'Simpan', loading: _isLoading, onPressed: _simpan),
+      ],
     );
   }
 }

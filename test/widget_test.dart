@@ -7,13 +7,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:health_app/main.dart';
+import 'package:nutribells/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  testWidgets('Health App opens on login screen', (WidgetTester tester) async {
+  testWidgets('NutriBells opens on login screen', (WidgetTester tester) async {
     SharedPreferences.setMockInitialValues(<String, Object>{});
-    await tester.pumpWidget(const HealthApp());
+    await tester.pumpWidget(const NutriBells());
     await tester.pumpAndSettle();
 
     expect(find.text('Email'), findsOneWidget);

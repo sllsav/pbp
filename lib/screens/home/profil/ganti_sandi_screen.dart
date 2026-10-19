@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../services/auth_service.dart';
-import '../../../utils/constants.dart';
 import '../../../utils/validators.dart';
-import '../../../widgets/custom_textfield.dart';
+import '../../../widgets/maroon_form.dart';
 
 class GantiSandiScreen extends StatefulWidget {
   const GantiSandiScreen({super.key});
@@ -47,65 +46,33 @@ class _GantiSandiScreenState extends State<GantiSandiScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ganti Sandi'),
-        backgroundColor: AppColors.primary,
-        foregroundColor: Colors.white,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CustomTextField(
-                controller: _sandiBaruController,
-                label: 'Sandi Baru',
-                icon: Icons.lock_outline,
-                obscureText: true,
-                validator: Validators.validatePassword,
-              ),
-              const SizedBox(height: 16),
-              CustomTextField(
-                controller: _konfirmasiController,
-                label: 'Konfirmasi Sandi Baru',
-                icon: Icons.lock_outline,
-                obscureText: true,
-                validator: (v) => Validators.validateConfirmPassword(
-                  v,
-                  _sandiBaruController.text,
-                ),
-              ),
-              const SizedBox(height: 24),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                onPressed: _isLoading ? null : _simpan,
-                child: _isLoading
-                    ? const SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: Colors.white,
-                        ),
-                      )
-                    : const Text(
-                        'Simpan',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
-              ),
-            ],
+    return MaroonFormPage(
+      title: 'Ganti Sandi',
+      subtitle: 'Gunakan sandi baru yang kuat dan mudah kamu ingat',
+      icon: Icons.lock_reset,
+      formKey: _formKey,
+      children: [
+        MaroonField(
+          controller: _sandiBaruController,
+          label: 'Sandi Baru',
+          icon: Icons.lock_outline,
+          obscureText: true,
+          validator: Validators.validatePassword,
+        ),
+        const SizedBox(height: 16),
+        MaroonField(
+          controller: _konfirmasiController,
+          label: 'Konfirmasi Sandi Baru',
+          icon: Icons.lock_outline,
+          obscureText: true,
+          validator: (v) => Validators.validateConfirmPassword(
+            v,
+            _sandiBaruController.text,
           ),
         ),
-      ),
+        const SizedBox(height: 28),
+        MaroonButton(label: 'Simpan', loading: _isLoading, onPressed: _simpan),
+      ],
     );
   }
 }

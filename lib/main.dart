@@ -10,17 +10,17 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
   await NotificationService.instance.initialize();
-  runApp(const HealthApp());
+  runApp(const NutriBells());
 }
 
-class HealthApp extends StatefulWidget {
-  const HealthApp({super.key});
+class NutriBells extends StatefulWidget {
+  const NutriBells({super.key});
 
   @override
-  State<HealthApp> createState() => _HealthAppState();
+  State<NutriBells> createState() => _NutriBellsState();
 }
 
-class _HealthAppState extends State<HealthApp> {
+class _NutriBellsState extends State<NutriBells> {
   late final Future<void> _restoreSession;
 
   @override
@@ -42,12 +42,23 @@ class _HealthAppState extends State<HealthApp> {
         }
 
         return MaterialApp(
-          title: 'Health App',
+          title: 'NutriBells',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            primarySwatch: Colors.red,
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color(0xFF800020),
+              primary: const Color(0xFF800020),
+            ),
             useMaterial3: true,
             scaffoldBackgroundColor: Colors.white,
+          ),
+          builder: (context, child) => Container(
+            color: const Color(0xFFF2E9EC),
+            alignment: Alignment.topCenter,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 450),
+              child: child,
+            ),
           ),
           home: AuthService.currentUser == null
               ? const LoginScreen()

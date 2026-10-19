@@ -1,4 +1,4 @@
-name: health_app
+name: nutribells
 description: "Aplikasi kesehatan untuk membantu kebiasaan hidup sehat."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -47,6 +47,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   sqflite_common_ffi_web: 1.2.0
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +59,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.14.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -72,6 +74,7 @@ flutter:
 
   assets:
     - .env
+    - assets/images/
     - assets/images/makanan/
     - assets/images/informasi/
     - assets/data/
@@ -106,3 +109,18 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon_nutribells.png"
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: "assets/images/icon_nutribells.png"
+    background_color: "#6E0E20"
+    theme_color: "#6E0E20"
+  windows:
+    generate: true
+    image_path: "assets/images/icon_nutribells.png"
+    icon_size: 256

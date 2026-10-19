@@ -31,8 +31,17 @@ class MakananGridCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 child: Container(
                   width: double.infinity,
-                  color: const Color(0xFFF4F8F2),
-                  child: makanan.gambar.toLowerCase().endsWith('.svg')
+                  color: makanan.emoji.isNotEmpty
+                      ? const Color(0xFFF6E7EB)
+                      : const Color(0xFFF4F8F2),
+                  child: makanan.emoji.isNotEmpty
+                      ? Center(
+                          child: Text(
+                            makanan.emoji,
+                            style: const TextStyle(fontSize: 76),
+                          ),
+                        )
+                      : makanan.gambar.toLowerCase().endsWith('.svg')
                       ? SvgPicture.asset(
                           makanan.gambar,
                           fit: BoxFit.contain,

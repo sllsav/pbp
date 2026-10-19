@@ -74,6 +74,13 @@ class _ChatScreenState extends State<ChatScreen> {
         title: const Text('Asisten Herbal'),
         backgroundColor: AppColors.primary,
         foregroundColor: Colors.white,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [AppColors.primaryLight, AppColors.primary],
+            ),
+          ),
+        ),
       ),
       body: Column(
         children: [
@@ -114,7 +121,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: InputDecoration(
                         hintText: 'Tanya tentang herbal atau nutrisi...',
                         filled: true,
-                        fillColor: const Color(0xFFF5F5F5),
+                        fillColor: const Color(0xFFFBF3F5),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(22),
                           borderSide: BorderSide.none,
@@ -161,7 +168,7 @@ class _ChatBubble extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
         decoration: BoxDecoration(
-          color: isUser ? AppColors.primary : const Color(0xFFF1F1F1),
+          color: isUser ? AppColors.primary : const Color(0xFFF6E7EB),
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(18),
             topRight: const Radius.circular(18),
@@ -189,7 +196,7 @@ class _TypingBubble extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: const Color(0xFFF1F1F1),
+        color: const Color(0xFFF6E7EB),
         borderRadius: BorderRadius.circular(18),
       ),
       child: const SizedBox(

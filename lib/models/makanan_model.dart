@@ -7,6 +7,7 @@ class MakananModel {
   double _protein;
   double _karbo;
   String _jenis;
+  String _emoji;
 
   MakananModel({
     required int id,
@@ -17,6 +18,7 @@ class MakananModel {
     required double protein,
     required double karbo,
     required String jenis,
+    String emoji = '',
   }) : _id = id,
        _nama = nama,
        _deskripsi = deskripsi,
@@ -24,7 +26,8 @@ class MakananModel {
        _kalori = kalori,
        _protein = protein,
        _karbo = karbo,
-       _jenis = jenis;
+       _jenis = jenis,
+       _emoji = emoji;
 
   int get id => _id;
   String get nama => _nama;
@@ -34,6 +37,9 @@ class MakananModel {
   double get protein => _protein;
   double get karbo => _karbo;
   String get jenis => _jenis;
+
+  /// Emoji pengganti gambar (dipakai jika file gambar belum tersedia)
+  String get emoji => _emoji;
 
   set nama(String value) => _nama = value;
   set deskripsi(String value) => _deskripsi = value;

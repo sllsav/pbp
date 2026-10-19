@@ -20,7 +20,14 @@ class MinumanListItem extends StatelessWidget {
       leading: SizedBox(
         width: 52,
         height: 52,
-        child: (minuman?.gambar ?? '').toLowerCase().endsWith('.svg')
+        child: (minuman?.emoji ?? '').isNotEmpty
+            ? Center(
+                child: Text(
+                  minuman!.emoji,
+                  style: const TextStyle(fontSize: 34),
+                ),
+              )
+            : (minuman?.gambar ?? '').toLowerCase().endsWith('.svg')
             ? SvgPicture.asset(
                 minuman?.gambar ?? '',
                 fit: BoxFit.contain,

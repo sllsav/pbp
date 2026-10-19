@@ -23,7 +23,7 @@ class AlarmItemCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFFEFE2E1)),
+        border: Border.all(color: const Color(0xFFEBD9DE)),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.03),

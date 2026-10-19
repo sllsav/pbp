@@ -18,12 +18,12 @@ class DatabaseService {
   Future<Database> _initDB() async {
     if (kIsWeb) {
       return databaseFactoryFfiWeb.openDatabase(
-        'health_app.db',
+        'nutribells.db',
         options: OpenDatabaseOptions(version: 1, onCreate: _onCreate),
       );
     }
 
-    final path = join(await getDatabasesPath(), 'health_app.db');
+    final path = join(await getDatabasesPath(), 'nutribells.db');
     return openDatabase(path, version: 1, onCreate: _onCreate);
   }
 
